@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cancer Support Chatbot</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
+  .chat-box { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+  .user { color: blue; }
+  .bot { color: green; }
+</style>
+</head>
+<body>
+  <h1>Cancer Support Chatbot</h1>
+  <form method="post">
+    <input type="text" name="message" placeholder="Ask a question..." required style="width:80%;" />
+    <button type="submit">Send</button>
+  </form>
+
+  {% if response %}
+    <div>
+      {% for msg in response %}
+        <div class="chat-box {{ msg.role }}">
+          <strong>{{ msg.role.capitalize() }}:</strong> {{ msg.content }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</body>
+</html>
